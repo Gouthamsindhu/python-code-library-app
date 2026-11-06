@@ -42,12 +42,7 @@ services:
     depends_on:
       - db
 
-  frontend:
-    image: gouthamsindhu/flm-project:frontend
-    deploy:
-      replicas: 1
-    ports:
-      - "5000:5000"
+ 
     networks:
       - mynetwork
     depends_on:
