@@ -37,6 +37,15 @@ services:
     networks:
       - mynetwork
 
+  main_app:
+    image: gouthamsindhu/flm-project:main-app
+    deploy:
+      replicas: 1
+    ports:
+      - "5000:5000"
+    networks:
+      - mynetwork
+
 networks:
   mynetwork:
     driver: overlay
