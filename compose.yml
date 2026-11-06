@@ -1,4 +1,5 @@
----
+version: '3.8'
+
 services:
   db:
     image: gouthamsindhu/flm-project:db
@@ -10,16 +11,13 @@ services:
       - mynetwork
 
   auth_service:
-    image: gouthamsindhu/flm-project:auth'
+    image: gouthamsindhu/flm-project:auth
     deploy:
       replicas: 1
     ports:
       - "5001:5001"
     networks:
       - mynetwork
-    depends_on:
-      - db
-    
 
   book_service:
     image: gouthamsindhu/flm-project:book
@@ -29,8 +27,7 @@ services:
       - "5002:5002"
     networks:
       - mynetwork
-    depends_on:
-      - db
+
   borrow_service:
     image: gouthamsindhu/flm-project:borrow
     deploy:
@@ -39,16 +36,6 @@ services:
       - "5003:5003"
     networks:
       - mynetwork
-    depends_on:
-      - db
-
- 
-    networks:
-      - mynetwork
-    depends_on:
-      - auth_service
-      - book_service
-      - borrow_service
 
 networks:
   mynetwork:
